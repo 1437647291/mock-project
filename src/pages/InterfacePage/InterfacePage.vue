@@ -217,7 +217,6 @@ export default {
   }
 }
 </script>
-
 <style lang="less" scope>
 .interface-page {
   width: 100%;
