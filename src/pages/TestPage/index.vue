@@ -1,10 +1,8 @@
 <template>
   <div>
-    <div v-for="(item, index) in arr" :key="index">
-      {{item}}
-      <Child />
-      <el-button @click="del(index)">删除</el-button>
-    </div>
+    <div>{{value}}</div>
+    <el-button @click="addNum">+1</el-button>
+    <Child :value="childValue" :addBrotherNum="addBrotherNum" />
   </div>
 </template>
 
@@ -15,18 +13,16 @@ export default {
   components: { Child },
   data () {
     return {
-      arr: [1, 2, 3],
-      arr1: [
-        { id: 1, value: 1 },
-        { id: 2, value: 2 },
-        { id: 3, value: 3 },
-      ],
-      a: ''
+      childValue: 0,
+      value: 0
     }
   },
   methods: {
-    del (index) {
-      this.arr.splice(index, 1);
+    addBrotherNum () {
+      this.childValue += 1;
+    },
+    addNum () {
+      this.value += 1;
     }
   }
 }

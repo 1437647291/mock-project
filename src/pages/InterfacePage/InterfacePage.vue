@@ -191,7 +191,8 @@ export default {
         this.editInterfaceRequest(params);
       } else {
         this.addInterfaceRequest(params);
-      }
+      };
+      this.currentInterface = {};
     },
     onSubmitJson (params) {
       if (params?.jsonId) {
@@ -200,6 +201,7 @@ export default {
         const { responseDescribe, jsonContent } = params;
         this.addJsonReuquest({ parentId: this.currentInterface.id, responseDescribe, jsonContent });
       };
+      this.currentInterface = {};
     },
     editJson (jsonInfo) {
       this.currentJson = jsonInfo;
