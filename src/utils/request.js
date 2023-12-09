@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Message } from 'element-ui';
 
 const request = (config) => {
   return new Promise((resolve, reject) => {
@@ -12,11 +13,15 @@ const request = (config) => {
     });
 
     service(config).then(res => {
+      console.log('res', res);
       if (res.status === 200) {
         resolve(res.data);
+      } else {
+        Message.error('出错了！请稍后再试！');
       };
     }).catch(err => {
       reject(err);
+      Message.error('出错了！请稍后再试！');
     })
   })
 };

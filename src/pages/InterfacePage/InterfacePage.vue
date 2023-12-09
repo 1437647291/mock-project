@@ -169,22 +169,24 @@ export default {
     },
     addInterface () {
       this.addInterfaceVis = true;
+      this.currentInterface = {};
     },
     closeAddModal () {
       this.addInterfaceVis = false;
-      this.currentInterface = {};
+      // this.currentInterface = {};
     },
     editInterface (interfaceInfo) {
       this.addInterfaceVis = true;
-      this.currentInterface = interfaceInfo;
+      this.currentInterface = JSON.parse(JSON.stringify(interfaceInfo));
     },
     addJson (interfaceInfo) {
       this.currentInterface = interfaceInfo;
+      this.currentJson = {};
       this.addJsonVis = true;
     },
     closeAddJson () {
       this.addJsonVis = false;
-      this.currentInterface = {};
+      // this.currentInterface = {};
     },
     onSubmit(params) {
       if (params.id) {
