@@ -13,7 +13,6 @@ const request = (config) => {
     });
 
     service(config).then(res => {
-      console.log('res', res);
       if (res.status === 200) {
         resolve(res.data);
       } else {

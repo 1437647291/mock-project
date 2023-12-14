@@ -49,14 +49,12 @@
     </div>
 
     <AddInterfaceModal
-      v-if="addInterfaceVis"
       :currentInterface="currentInterface"
       :visible="addInterfaceVis"
       :handleClose="closeAddModal"
       :handleOk="onSubmit"
     />
     <AddJsonModal
-      v-if="addJsonVis"
       :currentJson="currentJson"
       :visible="addJsonVis"
       :handleClose="closeAddJson"
@@ -172,7 +170,7 @@ export default {
       this.currentInterface = {};
     },
     closeAddModal () {
-      this.addInterfaceVis = false;
+      // this.addInterfaceVis = false;
       // this.currentInterface = {};
     },
     editInterface (interfaceInfo) {
@@ -185,7 +183,7 @@ export default {
       this.addJsonVis = true;
     },
     closeAddJson () {
-      this.addJsonVis = false;
+      // this.addJsonVis = false;
       // this.currentInterface = {};
     },
     onSubmit(params) {

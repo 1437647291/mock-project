@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>111</div>
     <el-container>
       <el-container>
         <el-aside width="200px">
@@ -63,6 +64,21 @@ body {
 
   .el-menu {
     height: 100%;
+
+    .is-active {
+      a {
+        color: #409EFF !important;
+      }
+    }
+
+    .el-menu-item {
+      a {
+        color: black;
+        &:-webkit-any-link {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 </style>
