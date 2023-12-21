@@ -6,7 +6,7 @@
 import request from '@/utils/request';
 
 export default {
-  name: 'HomePage',
+  name: 'WelcomePage',
   methods: {
     
   },
