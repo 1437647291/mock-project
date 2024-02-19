@@ -2,15 +2,14 @@
   <div>
     <div>{{value}}</div>
     <el-button @click="addNum">+1</el-button>
-    <Child :value="childValue" :addBrotherNum="addBrotherNum" />
   </div>
 </template>
 
 <script>
-import Child from './components/Child';
+
 export default {
   name: 'TestPage',
-  components: { Child },
+
   data () {
     return {
       childValue: 0,
