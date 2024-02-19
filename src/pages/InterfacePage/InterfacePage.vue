@@ -170,8 +170,8 @@ export default {
       this.currentInterface = {};
     },
     closeAddModal () {
-      // this.addInterfaceVis = false;
-      // this.currentInterface = {};
+      this.addInterfaceVis = false;
+      this.currentInterface = {};
     },
     editInterface (interfaceInfo) {
       this.addInterfaceVis = true;
@@ -183,8 +183,8 @@ export default {
       this.addJsonVis = true;
     },
     closeAddJson () {
-      // this.addJsonVis = false;
-      // this.currentInterface = {};
+      this.addJsonVis = false;
+      this.currentInterface = {};
     },
     onSubmit(params) {
       if (params.id) {

@@ -1,8 +1,16 @@
 import axios from 'axios';
+import { backLogin } from '@/utils/utils';
 import { Message } from 'element-ui';
+import Cookies from 'js-cookie';
+
+const { pathname } = window.location
 
 const request = (config) => {
   return new Promise((resolve, reject) => {
+    const auth = Cookies.get('mockAuth');
+    if (!pathname.includes('login') && !auth) {
+      backLogin();
+    };
     const service = axios.create({
       baseURL: '/api',
       timeout: 60000,
@@ -17,12 +25,10 @@ const request = (config) => {
       if (status === 200 && code === 200) {
         resolve(res.data);
       } else {
-        console.log('zhixing1')
         Message.error(err.msg);
         reject(res.data);
       };
     }).catch(err => {
-      console.log('zhixing2')
       reject(err);
       Message.error('出错了！请稍后再试！');
     })

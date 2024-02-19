@@ -64,6 +64,7 @@
 <script>
 import request from '@/utils/request';
 import { Message } from 'element-ui';
+import Cookies from 'js-cookie';
 
 export default {
   name: 'Login',
@@ -100,6 +101,7 @@ export default {
         data: params,
       }).then(res => {
         this.$router.push({ path: '/welcome' });
+        Cookies.set('mockAuth', res.data, { expires: 1 });
       }).catch(err => {})
     },
     toRegister () {
