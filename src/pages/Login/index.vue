@@ -100,9 +100,16 @@ export default {
         method: 'post',
         data: params,
       }).then(res => {
-        this.$router.push({ path: '/welcome' });
-        Cookies.set('mockAuth', res.data, { expires: 1 });
-      }).catch(err => {})
+        const { data, msg } = res;
+        if (data) {
+          this.$router.push({ path: '/welcome' });
+          Cookies.set('mockAuth', res.data, { expires: 1 });
+        } else {
+          Message.error(msg);
+        };
+      }).catch(err => {
+        console.log(err)
+      })
     },
     toRegister () {
       this.showLogin = false;
