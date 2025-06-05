@@ -2,8 +2,8 @@
   <div class="interface-page">
     <div class="header">
       <div class="search">
-        <el-input placeholder="请输入搜索内容" />
-        <el-button type="primary">搜索</el-button>
+        <el-input v-model="interfaceName" placeholder="请输入接口名称" />
+        <el-button type="primary" @click="onSearch">搜索</el-button>
       </div>
       <el-button type="primary" @click="addInterface">添加接口</el-button>
     </div>
@@ -49,12 +49,14 @@
     </div>
 
     <AddInterfaceModal
+      v-if="addInterfaceVis"
       :currentInterface="currentInterface"
       :visible="addInterfaceVis"
       :handleClose="closeAddModal"
       :handleOk="onSubmit"
     />
     <AddJsonModal
+      v-if="addJsonVis"
       :currentJson="currentJson"
       :visible="addJsonVis"
       :handleClose="closeAddJson"
@@ -79,12 +81,18 @@ export default {
       addJsonVis: false,
       currentInterface: {},
       currentJson: {},
+      interfaceName: '',
     }
   },
+  mounted() {
+    this.getInterfaceList();
+  },
   methods: {
-    getInterfaceList () {
+    getInterfaceList (params) {
       request({
         url: '/interface/list',
+        method: 'get',
+        params
       }).then(res => {
         const { list, current, pageSize, total } = res.data;
         this.interfaceList = list;
@@ -165,6 +173,9 @@ export default {
         this.getInterfaceList();
       })
     },
+    onSearch () {
+      this.getInterfaceList({ name: this.interfaceName });
+    },
     addInterface () {
       this.addInterfaceVis = true;
       this.currentInterface = {};
@@ -174,6 +185,7 @@ export default {
       this.currentInterface = {};
     },
     editInterface (interfaceInfo) {
+      console.log('interfaceInfo', interfaceInfo);
       this.addInterfaceVis = true;
       this.currentInterface = JSON.parse(JSON.stringify(interfaceInfo));
     },
@@ -213,9 +225,6 @@ export default {
     delJson (jsonInfo) {
       this.delJsonRequest({ jsonId: jsonInfo.jsonId });
     },
-  },
-  mounted() {
-    this.getInterfaceList();
   }
 }
 </script>
