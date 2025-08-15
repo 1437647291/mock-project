@@ -13,7 +13,7 @@
       <div class="edit-response">
         <vue-json-editor
           lang="zh"
-          mode="text"
+          mode="code"
           :showBtns="false"
           :expanded-on-start="true"
           v-model="jsonContent"
@@ -88,6 +88,13 @@ export default {
 
   .edit-response {
     width: 100%;
+
+    /deep/.jsoneditor-vue {
+
+      .jsoneditor-modes {
+        display: none;
+      }
+    }
   }
 }
 </style>
